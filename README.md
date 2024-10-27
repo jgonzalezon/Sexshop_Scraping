@@ -8,7 +8,7 @@ La actividad ha sido realizada de manera conjunta por **Francisco Javier Gonzale
 
 ## Ficheros
 
-* **Source/.py**: Contiene el codigo para iniciar el proceso de Web Scraping.
+* **Source/Scrap.py**: Contiene el codigo para iniciar el proceso de Web Scraping.
 * **Dataset/.py**: Contiene el Dataset generado.
 
 ## Recursos
