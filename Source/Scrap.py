@@ -7,14 +7,7 @@ import time
 
 # ENCABEZADOS PARA LAS SOLICITUDES
 HEADERS = {
-    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
-    "Accept-Encoding": "gzip, deflate, sdch, br",
-    "Accept-Language": "en-US,en;q=0.8",
-    "Cache-Control": "no-cache",
-    "dnt": "1",
-    "Pragma": "no-cache",
-    "Upgrade-Insecure-Requests": "1",
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36 Edg/129.0.0.0"
+       "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36 Edg/129.0.0.0"
 }
 
 # URL ,NUMERO DE PAGINAS, CARPETA DE IMAGENES Y ARCHIVO CSV
@@ -30,10 +23,10 @@ def create_folder(path):
         os.makedirs(path)
 
 def fetch_page(url):
-    """Fetch a webpage and return the response content."""
+    """BUSCAMOS QUE DE RESPUESTA NUESTRA SOLICITUD."""
     try:
         response = requests.get(url, headers=HEADERS, timeout=10)
-        response.raise_for_status()
+        response.status_code()
         return response.content
     except requests.exceptions.RequestException as e:
         print(f'Error fetching {url}: {e}')
@@ -42,9 +35,9 @@ def fetch_page(url):
 def parse_product(product):
     """ANALIZAMOS Y RETORNAMOS LOS VALORES BUSCADOS"""
     try:
-        name = product.find('h2', class_='product-name').text.strip()
-        price = product.find('span', class_='product-price').text.strip()
-        image_url = product.find('img')['src']
+        name = product.find('h2').text.strip()
+        price = product.find('div', class_='contPrice').find('span', class_='bold').text.strip()
+        image_url = product.find(figure).find('img')['src']
         return name, price, image_url
     except AttributeError as e:
         print(f'Error parsing product: {e}')
@@ -67,7 +60,7 @@ def scrapear_pagina(url, page_num, csv_writer):
         return
     
     soup = BeautifulSoup(content, 'html.parser')
-    for product in soup.find_all('div', class_='product-item'):
+    for product in soup.find_all('li'):
         name, price, image_url = parse_product(product)
         if name and price and image_url:
             image_path = f'{IMAGES_FOLDER}/{page_num}_{name}.jpg'
