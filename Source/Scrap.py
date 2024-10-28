@@ -54,7 +54,7 @@ def save_image(image_url, path):
         print(f'Error fetching image {image_url}: {e}')
 
 def scrapear_pagina(url, page_num, csv_writer):
-    """REALIZAMOS SCRPA EN UNA PAGINA Y VAMOS GUARDANDO EN FICHERO CSV"""
+    """REALIZAMOS SCRAP EN UNA PAGINA Y VAMOS GUARDANDO EN FICHERO CSV"""
     content = fetch_page(url)
     if content is None:
         return
@@ -79,7 +79,7 @@ def main():
             url = f'{BASE_URL}{page}#anchorView'
             print(f'Scrapeando página {page}')
             scrapear_pagina(url, page, csv_writer)
-            time.sleep(3)  # RETRASO DE 3 SEGUNDOS PARA NO SATURAR LA PAGINA
+            time.sleep(10)  # RETRASO DE 3 SEGUNDOS PARA NO SATURAR LA PAGINA
 
     print('Scraping completado.')
 
