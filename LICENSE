@@ -1,24 +1,22 @@
-This is free and unencumbered software released into the public domain.
+Licencia de Uso Propietaria del Programa de Web Scraping
 
-Anyone is free to copy, modify, publish, use, compile, sell, or
-distribute this software, either in source code form or as a compiled
-binary, for any purpose, commercial or non-commercial, and by any
-means.
+1. Titularidad y PropósitoEste software es propiedad exclusiva de Francisco Javier González y Laureano [apellidos] (en adelante, "El Propietario"). El programa de web scraping ha sido desarrollado para monitorear productos y precios de la competencia con fines comerciales. El uso de este software está estrictamente limitado a los términos y condiciones establecidos a continuación.
 
-In jurisdictions that recognize copyright laws, the author or authors
-of this software dedicate any and all copyright interest in the
-software to the public domain. We make this dedication for the benefit
-of the public at large and to the detriment of our heirs and
-successors. We intend this dedication to be an overt act of
-relinquishment in perpetuity of all present and future rights to this
-software under copyright law.
+2. Autorización de Uso: El Propietario concede al Usuario autorizado una licencia no transferible, no exclusiva y revocable para utilizar este software. El uso del software está limitado a los fines internos del comercio autorizado por El Propietario y no puede ser utilizado para otros propósitos sin el consentimiento previo y por escrito de El Propietario.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
-OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
-ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-OTHER DEALINGS IN THE SOFTWARE.
+3. Restricciones
 
-For more information, please refer to <https://unlicense.org>
+Distribución: El Usuario no podrá distribuir, vender, sublicenciar, alquilar, ni prestar este software, ni ponerlo a disposición de terceros de ninguna manera.
+
+Modificaciones: No se permite modificar, adaptar, realizar ingeniería inversa, descompilar ni desensamblar el software.
+
+Uso No Autorizado: El software no puede ser utilizado por ninguna persona o entidad que no haya sido autorizada expresamente por El Propietario.
+
+4. Responsabilidad: El software se proporciona "tal cual", sin garantías de ningún tipo, ya sea expresa o implícita. El Propietario no será responsable de ningún daño directo, indirecto, incidental, especial, consecuente o de otro tipo que resulte del uso o la incapacidad de uso del software.
+
+5. Finalización de la Licencia: El Propietario se reserva el derecho de revocar esta licencia en cualquier momento si el Usuario incumple alguno de los términos aquí establecidos. Al finalizar la licencia, el Usuario deberá eliminar todas las copias del software en su poder.
+
+6. ConfidencialidadEl Usuario se compromete a mantener la confidencialidad del software, incluyendo cualquier documento relacionado, información técnica, código fuente y algoritmos. La divulgación no autorizada de cualquiera de estos elementos constituirá un incumplimiento de esta licencia.
+
+7. JurisdicciónEsta licencia se rige e interpreta de acuerdo con las leyes de [País o jurisdicción]. Cualquier disputa que surja en relación con esta licencia será resuelta exclusivamente en los tribunales de Zaragoza.
+
