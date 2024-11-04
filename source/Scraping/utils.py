@@ -11,5 +11,6 @@ def guardar_datos(productos, precios, descripciones, imagenes, paginas, output_f
         'Pagina': paginas
     }
     df = pd.DataFrame(data)
-    df.to_csv(output_file, index=False, sep=';', encoding='utf-8', line_terminator='')
+    df.to_csv(output_file, index=False, sep=';', encoding='utf-8')
+    
     print(df)
