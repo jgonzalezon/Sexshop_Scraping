@@ -4,7 +4,7 @@ import pandas as pd
 import time
 import random
 import os
-from urllib.parse import urljoin, urlparse
+from urllib.parse import  urlparse
 
 # Cambiar el 
 HEADERS = {
@@ -12,7 +12,7 @@ HEADERS = {
 }
 
 # Crear carpeta para las imágenes si no existe
-imagenes_folder = "imagenes_productos"
+imagenes_folder = "data/imagenes_productos"
 os.makedirs(imagenes_folder, exist_ok=True)
 
 # Inicializar listas para guardar los datos
@@ -39,7 +39,21 @@ def obtener_descripcion_producto(url_producto):
         print(f"Error al acceder a la página del producto: {e}")
         return "No disponible"
 
-def scrape_categoria(url_base, paginas):
+def scrape_categoria(url_base, paginas,index):
+    
+    class_title=""
+    class_prize=""
+    class_image=""
+    class_description=""
+    
+    match index:
+        case 1:
+            class_title="woocommerce-loop-product__title"
+            class_prize="woocommerce-Price-amount amount"
+            class_image="woocommerce-LoopProduct-link"
+            class_description="inside-wc-product-image"
+    
+
     for page in range(1, paginas + 1):
         try:
             # URL de la página actual
@@ -71,11 +85,12 @@ def scrape_categoria(url_base, paginas):
                 
                 # Precio del producto
                 precio_tag = item.find('span', class_='woocommerce-Price-amount amount')
-                precio = precio_tag.text.strip() if precio_tag else "No disponible"
+                precio = precio_tag.text.strip().replace('€', '').strip() if precio_tag else "No disponible"
                 todos_precios.append(precio)
                 
                 # URL del producto para obtener la descripción
                 enlace_tag = item.find('a', class_='woocommerce-LoopProduct-link')
+                
                 if enlace_tag:
                     url_producto = enlace_tag['href']
                     descripcion = obtener_descripcion_producto(url_producto)
@@ -108,10 +123,10 @@ def scrape_categoria(url_base, paginas):
             print(f"Error al acceder a la página {page}: {e}")
 
 # Scrape de la categoría 'jugar'
-scrape_categoria("https://desmontandoalapili.com/categoria-producto/jugar", 10)
+scrape_categoria("https://desmontandoalapili.com/categoria-producto/jugar", 10, 1)
 
 # Scrape de la categoría 'bienestar'
-scrape_categoria("https://desmontandoalapili.com/categoria-producto/bienestar", 3)
+scrape_categoria("https://desmontandoalapili.com/categoria-producto/bienestar", 3, 1)
 
 
 # ----------------------------------------------TODO--------------------------------------------------
@@ -133,8 +148,8 @@ data = {
 df = pd.DataFrame(data)
 
 # Exportar el DataFrame a un archivo CSV
-output_file = "productos_jugar.csv"
-df.to_csv(output_file, index=False, sep=';', encoding='utf-8', line_terminator='')
+output_file = "data/productos_jugar.csv"
+df.to_csv(output_file, index=False, sep=';', encoding='utf-8')
 
 # Mostrar el DataFrame 
 print(df)

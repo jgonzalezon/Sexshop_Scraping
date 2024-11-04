@@ -1,0 +1,87 @@
+import requests # type: ignore
+from bs4 import BeautifulSoup # type: ignore
+import os
+import csv
+import time
+
+
+# ENCABEZADOS PARA LAS SOLICITUDES
+HEADERS = {
+       "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36 Edg/129.0.0.0"
+}
+
+# URL ,NUMERO DE PAGINAS, CARPETA DE IMAGENES Y ARCHIVO CSV
+BASE_URL = 'https://www.ferreteriamaranges.com/ferreteria-tagFamFER/?cmd=page&num='
+NUM_PAGES = 120
+IMAGES_FOLDER = 'images'
+CSV_FILE = 'productos.csv'
+
+
+def create_folder(path):
+    """CREAMOS CARPETA"""
+    if not os.path.exists(path):
+        os.makedirs(path)
+
+def fetch_page(url):
+    """BUSCAMOS QUE DE RESPUESTA NUESTRA SOLICITUD."""
+    try:
+        response = requests.get(url, headers=HEADERS, timeout=10)
+        response.status_code()
+        return response.content
+    except requests.exceptions.RequestException as e:
+        print(f'Error fetching {url}: {e}')
+        return None
+
+def parse_product(product):
+    """ANALIZAMOS Y RETORNAMOS LOS VALORES BUSCADOS"""
+    try:
+        name = product.find('h2').text.strip()
+        price = product.find('div', class_='contPrice').find('span', class_='bold').text.strip()
+        image_url = product.find(figure).find('img')['src']
+        return name, price, image_url
+    except AttributeError as e:
+        print(f'Error parsing product: {e}')
+        return None, None, None
+
+def save_image(image_url, path):
+    """GUARDAMOS IMAGEN """
+    try:
+        image_response = requests.get(image_url)
+        with open(path, 'wb') as file:
+            file.write(image_response.content)
+        print(f'Imagen guardada en: {path}')
+    except requests.exceptions.RequestException as e:
+        print(f'Error fetching image {image_url}: {e}')
+
+def scrapear_pagina(url, page_num, csv_writer):
+    """REALIZAMOS SCRAP EN UNA PAGINA Y VAMOS GUARDANDO EN FICHERO CSV"""
+    content = fetch_page(url)
+    if content is None:
+        return
+    
+    soup = BeautifulSoup(content, 'html.parser')
+    for product in soup.find_all('li'):
+        name, price, image_url = parse_product(product)
+        if name and price and image_url:
+            image_path = f'{IMAGES_FOLDER}/{page_num}_{name}.jpg'
+            save_image(image_url, image_path)
+            csv_writer.writerow([name, price, image_path])
+
+def main():
+    """FUNCION PRINCIPAL PARA EJECUTAR SCRAP"""
+    create_folder(IMAGES_FOLDER)
+
+    with open(CSV_FILE, mode='w', newline='', encoding='utf-8') as file:
+        csv_writer = csv.writer(file)
+        csv_writer.writerow(['Nombre', 'Precio', 'Ruta de la Imagen'])
+
+        for page in range(1, NUM_PAGES + 1):
+            url = f'{BASE_URL}{page}#anchorView'
+            print(f'Scrapeando página {page}')
+            scrapear_pagina(url, page, csv_writer)
+            time.sleep(10)  # RETRASO DE 3 SEGUNDOS PARA NO SATURAR LA PAGINA
+
+    print('Scraping completado.')
+
+if __name__ == "__main__":
+    main()
