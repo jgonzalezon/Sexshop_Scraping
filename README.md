@@ -5,6 +5,13 @@ Se puede acceder mediante los siguientes links:
 * **-Desmontando a la Pili** https://desmontandoalapili.com/?v=6b83b0879ce8
 * **-Eurovisex** https://eurovisex.com/
 
+## Instalación de dependencias
+
+Para instalar las dependencias necesarias, ejecuta el siguiente comando:
+
+pip install -r requirements.txt
+
+
 ## Miembros del equipo
 
 La actividad ha sido realizada de manera conjunta por **Francisco Javier Gonzalez Ontanon** y **Laureano Ezequiel Rios Oriol**.
@@ -13,7 +20,8 @@ La actividad ha sido realizada de manera conjunta por **Francisco Javier Gonzale
 
 * **Source/Scrap_sexshop_DesmontandoLaPili.py**: Contiene el codigo para iniciar el proceso de Web Scraping.
 * **Source/Scrap_sexshop_Eurovisex.py**: Contiene el codigo para iniciar el proceso de Web Scraping.
-* **Dataset/.py**: Contiene el Dataset generado.
+* **Data/productos_desmontandoLaPili.py**: Contiene el Dataset generado.
+* **Data/productos_eurovisex.py**: Contiene el Dataset generado.
 
 ## Recursos
 
