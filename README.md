@@ -16,6 +16,10 @@ El codigo puede ejecutarse desde el archivo main.py.
 Esto iniciara el proceso de Web Scraping en dichas paginas que dara lugar a la creacion de los datasets y la carpeta imagenes_productos dentro de la carpeta **/Data/**.
 
 
+## DOI de Zenodo
+10.5281/zenodo.14042744
+
+
 ## Miembros del equipo
 
 La actividad ha sido realizada de manera conjunta por **Francisco Javier Gonzalez Ontanon** y **Laureano Ezequiel Rios Oriol**.
