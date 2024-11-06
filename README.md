@@ -11,6 +11,10 @@ Para instalar las dependencias necesarias, ejecuta el siguiente comando:
 
 pip install -r requirements.txt
 
+El codigo puede ejecutarse desde el archivo main.py.
+
+Esto iniciara el proceso de Web Scraping en dichas paginas que dara lugar a la creacion de los datasets y la carpeta imagenes_productos dentro de la carpeta **/Data/**.
+
 
 ## Miembros del equipo
 
@@ -22,6 +26,7 @@ La actividad ha sido realizada de manera conjunta por **Francisco Javier Gonzale
 * **Source/Scrap_sexshop_Eurovisex.py**: Contiene el codigo para iniciar el proceso de Web Scraping.
 * **Data/productos_desmontandoLaPili.py**: Contiene el Dataset generado.
 * **Data/productos_eurovisex.py**: Contiene el Dataset generado.
+* **Data/imagenes_productos**: Contiene las iamgenes de cada producto.
 
 ## Recursos
 
