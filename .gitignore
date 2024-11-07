@@ -162,3 +162,4 @@ cython_debug/
 #No incluir las imágenes descargadas.
 
 data/imagenes_productos/
+*.csv
