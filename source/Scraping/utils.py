@@ -1,4 +1,4 @@
-import pandas as pd
+import pandas as pd # type: ignore
 import os
 
 def guardar_datos(productos, precios, descripciones, imagenes, paginas, output_file="data/productos.csv"):
